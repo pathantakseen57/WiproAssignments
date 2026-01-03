@@ -1,0 +1,121 @@
+CREATE DATABASE funcDB;
+USE funcDB;
+ 
+CREATE TABLE employees (
+    emp_id INT,
+    emp_name VARCHAR(50),
+    salary INT,
+    join_date DATE,
+    dept VARCHAR(20)
+);
+ 
+INSERT INTO employees VALUES
+(1, 'Amit', 30000, '2021-05-10', 'HR'),
+(2, 'Ravi', 50000, '2020-03-15', 'IT'),
+(3, 'Neha', 70000, '2019-07-20', 'Finance'),
+(4, 'Meena', 60000, '2022-01-12', 'IT');
+
+
+-- SCALAR FUNCTIONS
+--  
+--   Display employee names in uppercase
+
+
+select upper(emp_name) from employees; 
+
+--   Show employee name and length of name
+select emp_name, length(emp_name) from employees;
+
+-- Display current date
+select curdate();
+
+-- Calculate years of experience using join date
+select emp_name, floor(datediff(curdate(),join_date)/365) from employees;
+
+-- AGGREGATE FUNCTIONS
+--  
+-- Count total number of employees
+select count(*) from employees;
+
+-- Find average salary
+select avg(salary) from employees;
+
+-- Display department-wise total salary
+select dept,sum(salary) from employees group by dept;
+-- Find maximum salary in IT department
+select max(salary) from employees where dept='It';
+--  
+-- EXPRESSIONS & CASE
+--  
+-- Display salary category (Low, Medium, High) using CASE
+select * from employees;
+select emp_name,salary ,
+case 
+	when salary <40000 then 'low'
+    when salary <=60000 then 'medium'
+    else 'High'
+    end  as status
+    from employees;
+
+-- Show bonus amount:
+-- salary ≥ 60000 → 10% bonus
+-- salary < 60000 → 5% bonus
+select emp_name, salary,
+if(salary>=60000,salary*.1,salary*.05) as bonus_Amount from employees;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
