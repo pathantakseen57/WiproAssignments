@@ -1,0 +1,46 @@
+-- Number functin
+select abs(-20);
+select round(20.39,1);
+select floor(30.99);
+select ceil(29.2);
+select power(3,3);
+select mod(14,5);
+
+-- STRING FUNCTION
+select upper('Malaya');
+select lower('This is Nice TO do The Things');
+select concat('Mahesh',' Ojha');
+select trim('   Malaya    ');
+select length('this is a random text');
+select replace('Mahesh Ojha','Ojha','Sethi');
+select substr('Malaya sahoo',7,12);
+
+-- DATE FUNCTIONS
+select current_date();
+select curdate();
+select now();
+select year('1900-12-02');
+select datediff('2004-09-12','2025-12-16');
+select date_add(CURDATE(), INTERVAL 23 month);
+
+-- aggrigate function
+use wiprodbdecbatch;
+select * from student;
+
+select count(*) as Total_students
+from student;
+
+select round(avg(age)) as Avrage_mark from student;
+select department,count(*),sum(age) from student group by department;
+select max(age) from student;
+select min(age) from student;
+select department,max(age) from student group by department;
+
+
+
+
+
+
+
+
+
